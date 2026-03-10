@@ -39,7 +39,7 @@ export default function CoverPage() {
                 <div className="gold-ornament mx-auto mt-8" style={{ width: "100px" }} />
 
                 <p className="text-[0.5rem] text-[#8b7b6f] mt-4 tracking-[0.3em] uppercase">
-                    SRMIST · Kattankulathur · 2024
+                    SRMIST · Kattankulathur · 2026
                 </p>
             </div>
 
