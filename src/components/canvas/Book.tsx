@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { useThree } from "@react-three/fiber";
 import * as THREE from "three";
 import gsap from "gsap";
-import { Page, PAGE_WIDTH, PAGE_DEPTH } from "./Page";
+import { Page, PAGE_DEPTH } from "./Page";
 
 import CoverPage from "@/components/pages/CoverPage";
 import AboutPage from "@/components/pages/AboutPage";
@@ -15,7 +15,7 @@ import EducationPage from "@/components/pages/EducationPage";
 import CertificationsPage from "@/components/pages/CertificationsPage";
 import ContactPage from "@/components/pages/ContactPage";
 
-const pagesData = [
+export const pagesData = [
     { left: null, right: <CoverPage />, isCover: true, coverColor: "#3d3229" },
     { left: <AboutPage />, right: <SkillsPage />, isCover: false },
     { left: <ExperiencePage />, right: <ProjectsPage />, isCover: false },
@@ -23,8 +23,9 @@ const pagesData = [
     { left: <ContactPage />, right: null, isCover: true, coverColor: "#3d3229" },
 ];
 
-export function Book() {
-    const [page, setPage] = useState(0);
+export const MAX_PAGES = pagesData.length;
+
+export function Book({ page }: { page: number }) {
     const bookGroupRef = useRef<THREE.Group>(null);
 
     // Camera scroll animation variables
@@ -74,36 +75,8 @@ export function Book() {
         return () => window.removeEventListener("wheel", handleWheel);
     }, [camera]);
 
-    const goToNextPage = () => {
-        if (page < pagesData.length) {
-            setPage(page + 1);
-        }
-    };
-
-    const goToPrevPage = () => {
-        if (page > 0) {
-            setPage(page - 1);
-        }
-    };
-
     return (
         <group ref={bookGroupRef} position={[0, -0.5, 0]}>
-            {/* Click handlers for flipping */}
-            <mesh
-                position={[PAGE_WIDTH / 2, 0, 0]}
-                visible={false}
-                onClick={goToNextPage}
-            >
-                <planeGeometry args={[PAGE_WIDTH, 2]} />
-            </mesh>
-
-            <mesh
-                position={[-PAGE_WIDTH / 2, 0, 0]}
-                visible={false}
-                onClick={goToPrevPage}
-            >
-                <planeGeometry args={[PAGE_WIDTH, 2]} />
-            </mesh>
 
             {pagesData.map((pageData, index) => {
                 // Calculate stacking physical position so pages sit on top of each other

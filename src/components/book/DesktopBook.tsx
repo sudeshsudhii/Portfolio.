@@ -5,10 +5,12 @@ import { Canvas } from "@react-three/fiber";
 import { Preload } from "@react-three/drei";
 import Loader from "@/components/Loader";
 import { Scene } from "@/components/canvas/Scene";
+import { MAX_PAGES } from "@/components/canvas/Book";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 
 export default function DesktopBook() {
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(0);
 
   useEffect(() => {
     // Artificial load time to ensure 3D scene compiles shaders smoothly
@@ -30,11 +32,21 @@ export default function DesktopBook() {
           <color attach="background" args={['#1e1c1a']} />
 
           {/* Main 3D Book Environment */}
-          <Scene />
+          <Scene page={page} />
 
           {/* Preload textures/fonts to prevent pop-in */}
           <Preload all />
         </Canvas>
+
+        {/* DOM-based Next/Prev Invisible Hitboxes */}
+        <div
+          className="absolute top-0 right-0 w-[15%] h-full z-[999] cursor-pointer"
+          onClick={() => setPage(p => Math.min(p + 1, MAX_PAGES))}
+        />
+        <div
+          className="absolute top-0 left-0 w-[15%] h-full z-[999] cursor-pointer"
+          onClick={() => setPage(p => Math.max(p - 1, 0))}
+        />
 
         {/* Scroll hint overlay */}
         <div className="fixed bottom-10 left-1/2 -translate-x-1/2 pointer-events-none z-10 opacity-60">

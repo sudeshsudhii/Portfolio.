@@ -3,7 +3,7 @@
 import { Environment, ContactShadows, Float } from "@react-three/drei";
 import { Book } from "./Book";
 
-export function Scene() {
+export function Scene({ page }: { page: number }) {
     return (
         <>
             <ambientLight intensity={0.5} />
@@ -28,7 +28,7 @@ export function Scene() {
                 floatIntensity={0.2}
                 speed={1.5}
             >
-                <Book />
+                <Book page={page} />
             </Float>
 
             {/* Realistic contact shadows on the "desk" */}
