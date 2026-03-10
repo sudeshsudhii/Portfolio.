@@ -73,48 +73,46 @@ export const Page = forwardRef<THREE.Group, PageProps>(
             );
 
             // Perform Vertex Manipulation based on flip progress
-            if (geometryRef.current) {
-                const positions = geometryRef.current.attributes.position;
-                const vertexCount = positions.count;
+            const positions = geometry.attributes.position;
+            const vertexCount = positions.count;
 
-                // Bending Physics Logic
-                // As a page flips, it lifts from the right edge, curls toward the spine, and falls left.
-                for (let i = 0; i < vertexCount; i++) {
-                    const ix = i * 3;
-                    const iy = i * 3 + 1;
-                    const iz = i * 3 + 2;
+            // Bending Physics Logic
+            // As a page flips, it lifts from the right edge, curls toward the spine, and falls left.
+            for (let i = 0; i < vertexCount; i++) {
+                const ix = i * 3;
+                const iy = i * 3 + 1;
+                const iz = i * 3 + 2;
 
-                    const ox = originalPositions[ix]; // X distance from spine (0 to PAGE_WIDTH)
-                    const oy = originalPositions[iy];
-                    const oz = originalPositions[iz];
+                const ox = originalPositions[ix]; // X distance from spine (0 to PAGE_WIDTH)
+                const oy = originalPositions[iy];
+                const oz = originalPositions[iz];
 
-                    // Normalize X distance from spine (0.0 at spine, 1.0 at outer edge)
-                    const normX = ox / PAGE_WIDTH;
+                // Normalize X distance from spine (0.0 at spine, 1.0 at outer edge)
+                const normX = ox / PAGE_WIDTH;
 
-                    // The flip curve intensity peaks when halfway turned (~0.5)
-                    const flipIntensity = Math.sin(flipProgress.current * Math.PI);
+                // The flip curve intensity peaks when halfway turned (~0.5)
+                const flipIntensity = Math.sin(flipProgress.current * Math.PI);
 
-                    // Rotate the entire group to simulate the 180-degree flip
-                    // but we apply additional vertex bending to make it look like paper.
-                    let dx = ox;
-                    const dy = oy;
-                    let dz = oz;
+                // Rotate the entire group to simulate the 180-degree flip
+                // but we apply additional vertex bending to make it look like paper.
+                let dx = ox;
+                const dy = oy;
+                let dz = oz;
 
-                    // Dynamic curl radius when turning
-                    if (flipIntensity > 0.01 && normX > 0) {
-                        const curlRadius = 0.3; // Base bend radius
-                        const curlFactor = flipIntensity * normX * Math.PI; // Curl amount
-                        dx = ox - Math.sin(curlFactor) * curlRadius * flipIntensity;
-                        dz = oz + (1 - Math.cos(curlFactor)) * curlRadius * flipIntensity;
+                // Dynamic curl radius when turning
+                if (flipIntensity > 0.01 && normX > 0) {
+                    const curlRadius = 0.3; // Base bend radius
+                    const curlFactor = flipIntensity * normX * Math.PI; // Curl amount
+                    dx = ox - Math.sin(curlFactor) * curlRadius * flipIntensity;
+                    dz = oz + (1 - Math.cos(curlFactor)) * curlRadius * flipIntensity;
 
-                        // Lift the page up slightly in the middle of the flip
-                        dz += Math.sin(normX * Math.PI) * 0.1 * flipIntensity;
-                    }
-
-                    positions.setXYZ(i, dx, dy, dz);
+                    // Lift the page up slightly in the middle of the flip
+                    dz += Math.sin(normX * Math.PI) * 0.1 * flipIntensity;
                 }
-                positions.needsUpdate = true;
+
+                positions.setXYZ(i, dx, dy, dz);
             }
+            positions.needsUpdate = true;
 
             // Rotate group around spine
             if (group.current) {

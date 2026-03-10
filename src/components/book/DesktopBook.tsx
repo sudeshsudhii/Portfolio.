@@ -5,6 +5,7 @@ import { Canvas } from "@react-three/fiber";
 import { Preload } from "@react-three/drei";
 import Loader from "@/components/Loader";
 import { Scene } from "@/components/canvas/Scene";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 
 export default function DesktopBook() {
   const [loading, setLoading] = useState(true);
@@ -16,7 +17,7 @@ export default function DesktopBook() {
   }, []);
 
   return (
-    <>
+    <ErrorBoundary>
       {loading && <Loader />}
 
       <div className="w-full h-[100dvh] bg-[#1e1c1a] overflow-hidden fixed inset-0">
@@ -42,6 +43,6 @@ export default function DesktopBook() {
           </p>
         </div>
       </div>
-    </>
+    </ErrorBoundary>
   );
 }
