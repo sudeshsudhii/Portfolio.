@@ -2,7 +2,7 @@ const experiences = [
     {
         title: "GeeksforGeeks",
         role: "Full Stack Development Intern",
-        period: "Jan 2024 – June 2024",
+        period: "March 2025 – March 2026",
         bullets: [
             "Architected and deployed 3+ scalable Microservices applications using React, Node.js, and Spring Boot, serving 500+ daily active users.",
             "Engineered secure RESTful APIs with JWT authentication and Role-Based Access Control (RBAC), implementing Distributed Systems best practices.",
@@ -13,7 +13,7 @@ const experiences = [
     {
         title: "IIT Madras",
         role: "Cybersecurity Trainee",
-        period: "May 2023 – June 2023",
+        period: "December 2025",
         bullets: [
             "Conducted vulnerability assessments and penetration testing, identifying and patching 15+ critical security flaws (XSS, SQLi).",
             "Analyzed network traffic using Wireshark to detect anomalies and strengthen firewall rules.",

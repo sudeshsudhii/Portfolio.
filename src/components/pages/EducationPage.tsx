@@ -14,7 +14,7 @@ export default function EducationPage() {
                             M.Tech in Computer Science
                         </p>
                         <span className="text-[0.55rem] text-[#8b7b6f] font-mono whitespace-nowrap">
-                            2024 – Present
+                            2026 – Present
                         </span>
                     </div>
                     <p className="text-[0.68rem] text-[#6b5b4f] italic">SRMIST, Kattankulathur</p>
@@ -28,7 +28,7 @@ export default function EducationPage() {
                             B.Tech in Information Technology
                         </p>
                         <span className="text-[0.55rem] text-[#8b7b6f] font-mono whitespace-nowrap">
-                            2020 – 2024
+                            2022 – 2025
                         </span>
                     </div>
                     <p className="text-[0.68rem] text-[#6b5b4f] italic">Sri Balaji Chockalingam Engineering College</p>
