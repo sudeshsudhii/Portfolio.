@@ -2,7 +2,7 @@ export default function ContactPage() {
     const links = [
         { label: "Email", value: "Mrsudesh17@gmail.com", href: "mailto:Mrsudesh17@gmail.com", icon: "✉️" },
         { label: "Phone", value: "7904068192", href: "tel:+917904068192", icon: "📞" },
-        { label: "LinkedIn", value: "linkedin.com/in/sudesh-p", href: "https://linkedin.com/in/sudesh-p", icon: "🔗" },
+        { label: "LinkedIn", value: "linkedin.com/in/sudesh-p-8a656b358", href: "https://www.linkedin.com/in/sudesh-p-8a656b358/", icon: "🔗" },
         { label: "GitHub", value: "github.com/sudeshsudhii", href: "https://github.com/sudeshsudhii", icon: "⚙️" },
         { label: "Website", value: "sudhii.in", href: "https://www.sudhii.in", icon: "🌐" },
     ];
