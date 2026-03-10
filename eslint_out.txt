@@ -1,0 +1,16 @@
+﻿
+E:\Projects ongoing\PORTFOLIO\portfolio\src\components\canvas\Book.tsx
+  4:20  warning  'useFrame' is defined but never used  @typescript-eslint/no-unused-vars
+
+E:\Projects ongoing\PORTFOLIO\portfolio\src\components\canvas\Page.tsx
+   12:7   warning  'BONE_COUNT' is assigned a value but never used    @typescript-eslint/no-unused-vars
+   29:13  warning  'number' is defined but never used                 @typescript-eslint/no-unused-vars
+   43:15  warning  'materialsRef' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  103:25  error    'dy' is never reassigned. Use 'const' instead      prefer-const
+
+E:\Projects ongoing\PORTFOLIO\portfolio\src\components\canvas\Scene.tsx
+  3:10  warning  'useRef' is defined but never used  @typescript-eslint/no-unused-vars
+
+Γ£û 6 problems (1 error, 5 warnings)
+  1 error and 0 warnings potentially fixable with the `--fix` option.
+
